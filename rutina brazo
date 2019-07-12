@@ -1,0 +1,41 @@
+  switch(s[0])
+   {
+   
+     case'a':
+   garra.write(50);
+   delay(1000);
+   codo.write(170);
+   delay(1000);
+   garra.write(70);
+   delay(1000);
+   brazo.write(140);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(90);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   codo.write(145);
+   delay(1000);
+   garra.write(70);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   brazo.write(110);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(180);
+   delay(1000);
+   garra.write(70);
+   
+    break;
+    
+    }
