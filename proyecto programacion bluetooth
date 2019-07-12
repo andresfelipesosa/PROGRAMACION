@@ -184,37 +184,7 @@ switch(s[0])
     }
 
 
-     switch(s[0])
-   {
-   
-     case'a':
-    codo.write(100);
-    brazo.write(90);
-    delay(1000);
-    giro.write(75); 
-    delay(1000);
-    garra.write(45);
-    delay(1000); 
-    codo.write(130);
-    delay(1000);
-    garra.write(0);
-    delay(1000);
-    giro.write(165);
-    delay(1000);
-    garra.write(45);
-    delay(1000);
-    garra.write(5);
-    giro.write(75);
-    codo.write(95);
-    brazo.write(90); 
-    break;
-    
-    }
-
-
-   
-    
-   }
+  }
 
 
 
