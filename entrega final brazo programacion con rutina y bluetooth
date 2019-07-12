@@ -1,0 +1,288 @@
+#include <Servo.h>
+#include <SoftwareSerial.h>
+
+
+//definicion de los nombres de los servomotores
+
+
+Servo garra;
+Servo codo;
+Servo brazo;
+Servo giro;
+
+//definicion del puerto rt y tx para el modulo bluetooth
+
+SoftwareSerial BT(2,3);
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+
+
+
+Serial.begin(9600);
+BT.begin(9600);
+
+// asignacion de los puertos pwm de los servos
+
+garra.attach(5);
+codo.attach(10);
+brazo.attach(11);
+giro.attach(9);
+
+
+ 
+}
+
+
+//declaracion local de la  cadena s en la cual se almacenara los angulos
+char s[6];
+int X,Y,Z;
+
+
+void loop() 
+
+{
+
+  // ciclo de uso del brazo por puerto serial 
+  
+if(Serial.available()>0&&Serial.available()<=6)
+
+ {
+  
+  Serial.readBytes(s,6);
+  Serial.println(s);
+  switch(s[0])
+  
+  {
+    case'b':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    brazo.write(Z);
+    Serial.println(Z);
+    break;
+   }
+
+   switch(s[0])
+   {
+
+    case'g':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    giro.write(Z);
+    Serial.println(Z);
+    break;
+    
+    }
+
+
+switch(s[0])
+   {
+
+    case'c':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    codo.write(Z);
+    Serial.println(Z);
+    break;
+    
+    }
+
+
+    switch(s[0])
+   {
+
+    case'j':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    garra.write(Z);
+    Serial.println(Z);
+    break;
+    
+    }
+
+    switch(s[0])
+   {
+   
+     case'a':
+   giro.write(50);
+   delay(1000);
+   codo.write(170);
+   delay(1000);
+   garra.write(70);
+   delay(1000);
+   brazo.write(130);
+   delay(1000);
+    brazo.write(135);
+   delay(1000);
+    brazo.write(140);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(95);
+   delay(1000);
+   brazo.write(110);
+   delay(1000);
+   codo.write(143);
+   delay(1000);
+   brazo.write(115);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   
+   garra.write(70);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   brazo.write(110);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(180);
+   delay(1000);
+   garra.write(70);
+   
+    break;
+    
+    }
+
+
+   
+    
+   }
+
+
+// ciclo de uso del brazo por medio del puerto serial del bluetooth
+
+
+   if(BT.available()>0&&BT.available()<=6)
+
+ {
+  
+  BT.readBytes(s,6);
+  BT.println(s);
+  switch(s[0])
+  
+  {
+    case'b':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    brazo.write(Z);
+    BT.println(Z);
+    break;
+   }
+
+   switch(s[0])
+   {
+
+    case'g':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    giro.write(Z);
+    BT.println(Z);
+    break;
+    
+    }
+
+
+switch(s[0])
+   {
+
+    case'c':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+    codo.write(Z);
+    BT.println(Z);
+    break;
+    
+    }
+
+
+    switch(s[0])
+   {
+
+    case'j':
+    X=(s[1]-48)*100;
+    Y=(s[2]-48)*10;
+    Z=X+Y+(s[3]-48);
+    
+
+    garra.write(Z);
+    BT.println(Z);
+    break;
+    
+    }
+
+
+     switch(s[0])
+   {
+   
+     case'a':
+   garra.write(50);
+   delay(1000);
+   codo.write(170);
+   delay(1000);
+   garra.write(70);
+   delay(1000);
+   brazo.write(140);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(90);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   codo.write(145);
+   delay(1000);
+   garra.write(70);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   brazo.write(110);
+   delay(1000);
+   brazo.write(120);
+   delay(1000);
+   garra.write(90);
+   delay(1000);
+   brazo.write(90);
+   delay(1000);
+   giro.write(180);
+   delay(1000);
+   garra.write(70);
+   
+    break;
+    
+    }
+
+
+   
+    
+   }
+
+
+
+   
+}
